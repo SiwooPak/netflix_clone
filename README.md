@@ -1,18 +1,16 @@
-Hello, My Friends  
-Thank you for having interest in this repository ! 
-
-To use this application, 
-
-1. make dev.js file inside config folder 
-2. put mongoDB info into dev.js file 
-3. Type  " npm install " inside the root directory  ( Download Server Dependencies ) 
-4. Type " npm install " inside the client directory ( Download Front-end Dependencies )
-
-
-If you have problem, feel free to ask me ^^ 
-
-You can watch the tutorial for this app.
-
-https://www.youtube.com/channel/UCFyXA9x8lpL3EYWeYhj4C4Q?view_as=subscriber
+## 영화정보 사이트
+### 7/30~31
+- 몽고디비 연결(/server/config/dev.js)
+- 메인페이지 템플릿 작성
+- themoviedb.org 회원가입 및 api 키 등록
+  - Config.js에 api의 url, key, image 경로 등록
+  - fetch api를 사용하여 위의 사이트에서 영화정보 데이터 가져오기
+  - 가져온 데이터를 state에 저장
+- 메인페이지에 메인이미지 관련 컴포넌트 폴더 및 파일 생성
+  - fetch api로 받은 데이터를 props로 메인페이지에 전달
+<hr />
+### 7/31 해야 할일
+- Grid Card Component 만들기
+- Load More Function 만들기
 
 
