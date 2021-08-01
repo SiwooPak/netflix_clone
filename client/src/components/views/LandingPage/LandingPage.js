@@ -13,15 +13,22 @@ function LandingPage() {
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
     fetchMovies(endpoint);
   }, []);
-  const fetchMovies = (endpoint) => {
-    fetch(endpoint)
-      .then((response) => response.json())
-      .then((data) => {
-        setMovies([...Movies, ...data.results]);
-        if(MainMovieImage === null) setMainMovieImage(data.results[0]);
-        setCurrentPage(data.page);
-      })
-      .catch((err) => console.log(err));
+  // const fetchMovies = (endpoint) => {
+  //   fetch(endpoint)
+  //     .then((response) => response.json())
+  //     .then((data) => {
+  //       setMovies([...Movies, ...data.results]);
+  //       if(MainMovieImage === null) setMainMovieImage(data.results[0]);
+  //       setCurrentPage(data.page);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+  // async, await 이용해보기
+  const fetchMovies = async (endpoint) => {
+    const data = await fetch(endpoint).then((response) => response.json());
+    setMovies([...Movies, ...data.results]);
+    if (MainMovieImage === null) setMainMovieImage(data.results[0]);
+    setCurrentPage(data.page);
   };
   const loadMoreItems = () => {
     const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=${
