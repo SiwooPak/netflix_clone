@@ -14,6 +14,10 @@
   - 최신영화관련 api는 안됨
   - 영화중 인기있는 영화들의 정보로 가져옴
 - Load More Function 만들기(v)
+  - 버튼 클릭 이벤트 작성후 추가 영화정보를 가져오는데 에러 발생
+  - 에러코드
+    - Updating a style property during rerender (background) when a conflicting property is set (backgroundSize) can lead to styling bugs.
+    - 계속 MainMovieImage에 값이
 
 
 
