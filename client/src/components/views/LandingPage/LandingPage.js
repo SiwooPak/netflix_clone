@@ -10,7 +10,7 @@ function LandingPage() {
   const [MainMovieImage, setMainMovieImage] = useState(null);
   const [CurrentPage, setCurrentPage] = useState(0);
   useEffect(() => {
-    const endpoint = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US&page=1`;
+    const endpoint = `${API_URL}movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`;
     fetchMovies(endpoint);
   }, []);
   // const fetchMovies = (endpoint) => {
@@ -26,8 +26,9 @@ function LandingPage() {
   // async, await 이용해보기
   const fetchMovies = async (endpoint) => {
     const data = await fetch(endpoint).then((response) => response.json());
-    setMovies([...Movies, ...data.results]);
     if (MainMovieImage === null) setMainMovieImage(data.results[0]);
+    const results = data.results;
+    setMovies([...Movies, ...results.slice(1)]);  
     setCurrentPage(data.page);
   };
   const loadMoreItems = () => {
@@ -41,11 +42,13 @@ function LandingPage() {
       <div style={{ width: "100%", margin: "0" }}>
         {/* Movie Image */}
         {MainMovieImage && (
+          <a href>
           <MainImage
             image={`${IMAGE_BASE_URL}w1280${MainMovieImage.backdrop_path}`}
             title={MainMovieImage.original_title}
             text={MainMovieImage.overview}
           />
+          </a>
         )}
         <div style={{ width: "85%", margin: "1rem auto" }}>
           <h2>인기 영화</h2>
