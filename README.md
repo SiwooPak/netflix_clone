@@ -10,7 +10,10 @@
   - fetch api로 받은 데이터를 props로 메인페이지에 전달
 <hr />
 ### 7/31 해야 할일
-- Grid Card Component 만들기
-- Load More Function 만들기
+- Grid Card Component 만들기(v)
+  - 최신영화관련 api는 안됨
+  - 영화중 인기있는 영화들의 정보로 가져옴
+- Load More Function 만들기(v)
+
 
 
