@@ -17,7 +17,7 @@
   - 버튼 클릭 이벤트 작성후 추가 영화정보를 가져오는데 에러 발생
   - 에러코드
     - Updating a style property during rerender (background) when a conflicting property is set (backgroundSize) can lead to styling bugs.
-    - 계속 MainMovieImage에 값이
+    - 계속 MainImage컴포넌트에 css 충돌인듯한데, 이 부분은 최초 1번만 MainMovieImage 값을 할당해서 해결함
 
 
 
