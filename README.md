@@ -18,6 +18,8 @@
   - 에러코드
     - Updating a style property during rerender (background) when a conflicting property is set (backgroundSize) can lead to styling bugs.
     - 계속 MainImage컴포넌트에 css 충돌인듯한데, 이 부분은 최초 1번만 MainMovieImage 값을 할당해서 해결함
+- MainImage도 클릭 가능하게 함
+  - 그리드 부분은 메인이미지를 제외한 영화이미지로 정렬하게 바꿈
 
 
 
