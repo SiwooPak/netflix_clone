@@ -9,6 +9,7 @@ function LandingPage() {
   const [Movies, setMovies] = useState([]);
   const [MainMovieImage, setMainMovieImage] = useState(null);
   const [CurrentPage, setCurrentPage] = useState(0);
+  console.log(MainMovieImage);
   useEffect(() => {
     const endpoint = `${API_URL}movie/upcoming?api_key=${API_KEY}&language=en-US&page=1`;
     fetchMovies(endpoint);
@@ -42,7 +43,7 @@ function LandingPage() {
       <div style={{ width: "100%", margin: "0" }}>
         {/* Movie Image */}
         {MainMovieImage && (
-          <a href>
+          <a href={MainMovieImage.id}>
           <MainImage
             image={`${IMAGE_BASE_URL}w1280${MainMovieImage.backdrop_path}`}
             title={MainMovieImage.original_title}
