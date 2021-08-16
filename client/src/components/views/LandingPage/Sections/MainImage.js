@@ -14,6 +14,7 @@ function MainImage(props) {
         backgroundPosition: "center, center",
         width: "100%",
         position: "relative",
+        aspectRatio: 16/9,
       }}
     >
       <div>
