@@ -46,9 +46,9 @@ export default function MovieDetailPage(props) {
             {IsView ? "Close Actors" : "Open Actors"}
           </button>
         </div>
-        <Row gutter={[16, 16]}>
-          {IsView &&
-            Actors.map((actor, index) => (
+        {IsView && (
+          <Row gutter={[16, 16]}>
+            {Actors.map((actor, index) => (
               <React.Fragment key={index}>
                 <GridCards
                   img={
@@ -60,7 +60,8 @@ export default function MovieDetailPage(props) {
                 />
               </React.Fragment>
             ))}
-        </Row>
+          </Row>
+        )}
       </div>
     </div>
   );
