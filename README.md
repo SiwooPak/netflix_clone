@@ -35,7 +35,15 @@
   - 선택한 영화에 출연한 배우이미지 grid view
     - 이미지가 없는 배우는 안 보이게 함
     - 이미지 속성의 title 추가
-  - 즐겨찾기 기능 추가
-    - Create to Favorite model
-    - Create Favorite Btn UI
-    
+
+### 8/18 todo...    
+- 즐겨찾기 기능 구현(1)
+  - Create to Favorite model(server)
+  - Create Favorite Btn Component(client)
+  - Added Favorite component to MovieDetailPage component(client)
+
+### 8/19 todo...
+- 즐겨찾기 기능 구현(2)
+  - useEffect를 사용해서 서버단에 요청을 보내고 응답하는 것(client)
+  - api uri와 라우터 연결(server)
+  - 라우터에서 Favorite model을 이용하여 데이터베이스 정보 조회(server)

@@ -3,6 +3,7 @@ import { API_URL, API_KEY, IMAGE_BASE_URL } from "../../Config";
 import MainImage from "../LandingPage/Sections/MainImage";
 import MovieInfo from "./sections/MovieInfo";
 import GridCards from "../commons/GridCards";
+import Favorite from "./sections/Favorite";
 import { Row } from "antd";
 
 export default function MovieDetailPage(props) {
@@ -34,6 +35,9 @@ export default function MovieDetailPage(props) {
       />
       {/* body */}
       <div style={{ width: "85%", margin: "1rem auto" }}>
+        <div style={{display: 'flex', justifyContent: 'end'}} >
+          <Favorite movieInfo={Movie} movieId={movieId} userFrom={localStorage.getItem('userId')} />
+        </div>
         {/* movie info */}
         <MovieInfo movie={Movie} />
         <br />
