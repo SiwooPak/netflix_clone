@@ -36,3 +36,6 @@
     - 이미지가 없는 배우는 안 보이게 함
     - 이미지 속성의 title 추가
   - 즐겨찾기 기능 추가
+    - Create to Favorite model
+    - Create Favorite Btn UI
+    
