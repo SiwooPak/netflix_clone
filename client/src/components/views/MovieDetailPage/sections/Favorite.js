@@ -7,6 +7,9 @@ function Favorite({movieInfo, movieId, userFrom}) {
     const moviePost = movieInfo.backdrop_path;
     const movieRunTime = movieInfo.runtime;
 
+    const [FavoriteNo, setFavoriteNo] = useState(0);
+    const [IsFavorited, setIsFavorited] = useState(false);
+
     useEffect(() => {
         let vars = {
             userFrom,
@@ -16,17 +19,26 @@ function Favorite({movieInfo, movieId, userFrom}) {
         .then(response => {
             if(response.data.success) {
                 console.log(response.data);
-                
+                setFavoriteNo(response.data.favoriteNo);
             } else {
                 alert('숫자 정보를 가져오는데 실패했습니다.')
+            }
+        })
+        Axios.post('/api/favorite/favorited', vars)
+        .then(response => {
+            if(response.data.success) {
+                console.log(response.data.isFavorited);
+                setIsFavorited(response.data.isFavorited);
+            } else {
+                alert('즐겨찾기 정보를 가져오는데 실패했습니다.')
             }
         })
     }, [])
 
     return (
-        <div>
-            <button>Favorite</button>
-        </div>
+        <>
+            <button> {Favorite ? "Favorited" : "Favorite?"} {Favorite}</button>
+        </>
     )
 }
 

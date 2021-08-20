@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
 const { Favorite } = require("../models/Favorite");
 
@@ -7,26 +7,25 @@ const { Favorite } = require("../models/Favorite");
 //=================================
 
 router.post("/favoriteNo", (req, res) => {
-    const {movieId} = req.body;
+  const { movieId } = req.body;
 
-    Favorite.find({movieId})
-    .exec((err, info) => {
-        if(err) return res.status(400).send(err);
-        res.status(200).json({success:true, favoriteNo:info.length})
-    })
+  Favorite.find({ movieId }).exec((err, info) => {
+    if (err) return res.status(400).send(err);
+    res.status(200).json({ success: true, favoriteNo: info.length });
+  });
 });
 
-router.post("/register", (req, res) => {
-
-    const user = new User(req.body);
-
-    user.save((err, doc) => {
-        if (err) return res.json({ success: false, err });
-        return res.status(200).json({
-            success: true
-        });
-    });
+router.post("/favorited", (req, res) => {
+  const { movieId, userFrom } = req.body;
+  Favorite.find({ movieId, userFrom }).exec((err, info) => {
+    if (err) return res.status(400).send(err);
+    // 즐겨찾기 했으면 true, 아니면 false
+    let isFavorited = false;
+    // 즐겨찾기 정보가 있다면 true로 재할당
+    if(info.length) isFavorited = true;
+    // 즐겨찾기 정보를 보냄.
+    res.status(400).json({ success: true, isFavorited });
+  });
 });
-
 
 module.exports = router;
