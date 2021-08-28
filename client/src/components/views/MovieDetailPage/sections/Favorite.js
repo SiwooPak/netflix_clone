@@ -10,11 +10,12 @@ function Favorite({movieInfo, movieId, userFrom}) {
     const [FavoriteNo, setFavoriteNo] = useState(0);
     const [IsFavorited, setIsFavorited] = useState(false);
 
+    let vars = {
+        userFrom,
+        movieId
+    }
     useEffect(() => {
-        let vars = {
-            userFrom,
-            movieId
-        }
+        
         Axios.post('/api/favorite/favoriteNo', vars)
         .then(response => {
             if(response.data.success) {
@@ -34,10 +35,30 @@ function Favorite({movieInfo, movieId, userFrom}) {
             }
         })
     }, [])
-
+    const onClickFavorite = () => {
+        if(IsFavorited) {
+            Axios.post('/api/favorite/removeFromFavorite', vars)
+            .then(response => {
+                if(response.data.success) {
+                    setIsFavorited(!isFavorited)
+                } else {
+                    alert("favorite's list remove, failed!")
+                }
+            })
+        } else {
+            Axios.post('/api/favorite/addToFavorite', vars)
+            .then(response => {
+                if(response.data.success) {
+                    setIsFavorited(!isFavorited)
+                } else {
+                    alert("favorite's list add failed!")
+                }
+            })
+        }
+    }
     return (
         <>
-            <button> {Favorite ? "Favorited" : "Favorite?"} {Favorite}</button>
+            <button onClick={onClickFavorite}> {Favorite ? "Favorited" : "Favorite?"} {Favorite}</button>
         </>
     )
 }
