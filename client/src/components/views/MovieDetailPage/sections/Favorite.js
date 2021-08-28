@@ -12,7 +12,10 @@ function Favorite({movieInfo, movieId, userFrom}) {
 
     let vars = {
         userFrom,
-        movieId
+        movieId,
+        movieTitle,
+        moviePost,
+        movieRunTime
     }
     useEffect(() => {
         
