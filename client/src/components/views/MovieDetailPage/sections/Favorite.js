@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import Axios from 'axios';
-
+import {Button} from 'antd';
 
 function Favorite({movieInfo, movieId, userFrom}) {
     const movieTitle = movieInfo.movieTitle;
@@ -43,6 +43,7 @@ function Favorite({movieInfo, movieId, userFrom}) {
             Axios.post('/api/favorite/removeFromFavorite', vars)
             .then(response => {
                 if(response.data.success) {
+                    setFavoriteNo(FavoriteNo - 1)
                     setIsFavorited(!isFavorited)
                 } else {
                     alert("favorite's list remove, failed!")
@@ -52,6 +53,7 @@ function Favorite({movieInfo, movieId, userFrom}) {
             Axios.post('/api/favorite/addToFavorite', vars)
             .then(response => {
                 if(response.data.success) {
+                    setFavoriteNo(FavoriteNo + 1)
                     setIsFavorited(!isFavorited)
                 } else {
                     alert("favorite's list add failed!")
@@ -61,7 +63,7 @@ function Favorite({movieInfo, movieId, userFrom}) {
     }
     return (
         <>
-            <button onClick={onClickFavorite}> {Favorite ? "Favorited" : "Favorite?"} {Favorite}</button>
+            <Button onClick={onClickFavorite}> {Favorite ? "Favorited" : "Favorite?"} {Favorite}</Button>
         </>
     )
 }
