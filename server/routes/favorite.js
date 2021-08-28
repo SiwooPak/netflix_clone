@@ -28,4 +28,22 @@ router.post("/favorited", (req, res) => {
   });
 });
 
+router.post("/addToFavorite", (req, res) => {
+  const favorite = Favorite(req.body)
+  
+  favorite.save((err, doc) => {
+    if(err) return res.status(400).send(err);
+    return res.send(201).json({success: true})
+  })
+});
+
+router.post("/removeFromFavorite", (req, res) => {
+  const {movieId, userFrom} = req.body;
+  Favorite.findOneAndDelete({movieId, userFrom})
+    .exec((err,doc) => {
+      if(err) return res.status(400).send(err);
+      return res.status(200).json({ success: true, doc});
+    })
+});
+
 module.exports = router;
