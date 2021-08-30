@@ -1,28 +1,33 @@
 import React from 'react'
+import './favorite.css';
 import styled from 'styled-components';
-
-export const Table = styled.table`
-table{
+ 
+export const Favorite_Table = styled.table`
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
     width: 100%
-}
-td,th {
-    border: 1px solid #dddddd;
-    text-align: left;
-    padding: 8px;
-}
-tr:nth-child(even) {
-    background-color: #dddddd;
-}
+
+    > td,th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+    > tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+`;
+
+export const Favorite_Div = styled.div`
+    width: 85%;
+    margin: 3rem auto;
 `;
 
 function FavoritePage() {
     return (
-        <div style={{width: '85%', margin: '3rem atuo'}}>
+        <Favorite_Div>
             <h2>Favorite Movies</h2>
             <hr />
-            <Table>
+            <table>
                 <thead>
                     <tr>
                         <th>Movie Title</th>
@@ -33,9 +38,9 @@ function FavoritePage() {
                 <tbody>
 
                 </tbody>
-            </Table> 
+            </table> 
             
-        </div>
+        </Favorite_Div>
     )
 }
 

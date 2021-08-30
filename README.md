@@ -58,4 +58,5 @@
 
 ### 8/30 todo...
 - 즐겨찾기 페이지
-  
+  - 즐겨찾기 컴포넌트 템플릿 작성(/client/src/views/FavoritePage/FavoritePage.js)
+  - css는 스타일드 컴포넌트로 하려 했으니 th,tr,td 부분 css가 적용이 안돼 우선 외부css형식으로 적용.  
