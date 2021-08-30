@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import Axios from 'axios';
 import {Button} from 'antd';
 
@@ -44,7 +44,7 @@ function Favorite({movieInfo, movieId, userFrom}) {
             .then(response => {
                 if(response.data.success) {
                     setFavoriteNo(FavoriteNo - 1)
-                    setIsFavorited(!isFavorited)
+                    setIsFavorited(!IsFavorited)
                 } else {
                     alert("favorite's list remove, failed!")
                 }
@@ -54,7 +54,7 @@ function Favorite({movieInfo, movieId, userFrom}) {
             .then(response => {
                 if(response.data.success) {
                     setFavoriteNo(FavoriteNo + 1)
-                    setIsFavorited(!isFavorited)
+                    setIsFavorited(!IsFavorited)
                 } else {
                     alert("favorite's list add failed!")
                 }
