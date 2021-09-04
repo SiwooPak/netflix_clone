@@ -1,7 +1,8 @@
 import React, {useState, useEffect} from 'react'
 import './favorite.css';
 import styled from 'styled-components';
- 
+import {Popover} from 'antd';
+import {IMAGE_BASE_URL} from '../../Config' 
 export const Favorite_Table = styled.table`
     font-family: Arial, Helvetica, sans-serif;
     border-collapse: collapse;
@@ -38,6 +39,44 @@ function FavoritePage() {
             cleanup
         }
     }, [input])
+    const onDelete = (movieId, userFrom) => {
+        const vars = {
+            movieId,
+            userFrom
+        }
+        Axios.post('/api/favorite/removeFromFavorite', vars)
+            .then( response => {
+                if(response.data.success) {
+
+                }else{
+                    alert('리스트에서 지우는데 실패했습니다.')
+                }
+            })
+    }
+    const renderCards = Favorites.map((favorite, idx)=> {
+        const content = (
+            <div>
+                {favorite.moviePost ?
+                    <img src={`${IMAGE_BASE_URL}w500${favorite.moviePost}`} />
+                    : "no image"
+                }
+            </div>
+        )
+
+        return <tr key={idx}>
+            <Popover 
+                content={content}
+                title={`${favorite.movieTitle}`}
+            >
+                <td>{favorite.movieTitle}</td>
+            </Popover>
+            <td>{favorite.movieRunTime}</td>
+            <td>
+                <button onClick={()=>onDelete(favorite.movieId, favorite.userfrom)}>Remove</button>
+            </td>
+        </tr>
+    })
+
     return (
         <Favorite_Div>
             <h2>Favorite Movies</h2>
@@ -51,15 +90,7 @@ function FavoritePage() {
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        Favorites.map((favorite, idx)=> {
-                            <tr key={idx}>
-                                <td>{favorite.movieTitle}</td>
-                                <td>{favorite.movieRunTime}</td>
-                                <td><button>Remove</button></td>
-                            </tr>
-                        })
-                    }
+                  <renderCards />
                 </tbody>
             </table> 
             
